@@ -27,5 +27,15 @@ public class Main {
 
         System.out.println("twoja stara");
 
+        Car dirtyOne = new Car();
+        dirtyOne.producer = "fiat";
+        dirtyOne.model = "bravo";
+        dirtyOne.yearOfProduction = 2015;
+        dirtyOne.plates = "GDA32342";
+
+        me.car = dirtyOne;
+
+        System.out.println(me.car.plates);
+
     }
 }
