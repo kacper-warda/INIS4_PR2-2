@@ -1,8 +1,10 @@
 package com.company;
 
+import com.company.devices.Car;
+
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         Human me = new Human();
         me.firstName = "Kacper";
@@ -25,17 +27,37 @@ public class Main {
         me.pet.takeForAWalk();
         me.pet.feed();
 
-        System.out.println("twoja stara");
 
         Car dirtyOne = new Car();
         dirtyOne.producer = "fiat";
         dirtyOne.model = "bravo";
         dirtyOne.yearOfProduction = 2015;
-        dirtyOne.plates = "GDA32342";
+        dirtyOne.setPlates("GDA323");
 
-        me.car = dirtyOne;
+        me.setCar(dirtyOne);
 
-        System.out.println(me.car.plates);
+        Human myWife = new Human();
+        myWife.firstName = "Karolina";
+        myWife.lastName = "Warda";
+        myWife.riseMySalary();
+        myWife.riseMySalary();
+        myWife.riseMySalary();
+        myWife.riseMySalary();
+        myWife.riseMySalary();
+        myWife.setCar(me.getCar());
 
+        System.out.println(myWife.getCar().getPlates());
+
+        System.out.println(me.getCar());
+        System.out.println(myWife.getCar());
+
+        System.out.println(me);
+        System.out.println(myWife);
+
+        System.out.println(me.pet);
+
+        myWife.feed();
+        me.takeForAWalk();
+        System.out.println(me.species);
     }
 }

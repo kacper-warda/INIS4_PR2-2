@@ -42,4 +42,8 @@ public class Animal {
             System.out.println("nice walk, my weight is now " + this.weight);
         }
     }
+
+    public String toString(){
+        return this.species + " " + this.name;
+    }
 }
