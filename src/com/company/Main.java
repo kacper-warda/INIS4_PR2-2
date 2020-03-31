@@ -56,8 +56,5 @@ public class Main {
 
         System.out.println(me.pet);
 
-        myWife.feed();
-        me.takeForAWalk();
-        System.out.println(me.species);
     }
 }
