@@ -2,7 +2,7 @@ package com.company;
 
 import java.io.File;
 
-public class Animal {
+public class Animal implements Edible, Saleable {
     final String species;
     private Double weight;
     public String name;
@@ -14,12 +14,16 @@ public class Animal {
 
     public Animal(String species) {
         this.species = species;
-        if (species == "dog") {
-            this.weight = DEFAULT_DOG_WEIGHT;
-        } else if (species == "mouse") {
-            this.weight = DEFAULT_MOUSE_WEIGHT;
-        } else if (species == "lion") {
-            this.weight = DEFAULT_LION_WEIGHT;
+        switch (species) {
+            case "dog":
+                this.weight = DEFAULT_DOG_WEIGHT;
+                break;
+            case "mouse":
+                this.weight = DEFAULT_MOUSE_WEIGHT;
+                break;
+            case "lion":
+                this.weight = DEFAULT_LION_WEIGHT;
+                break;
         }
     }
 
@@ -45,5 +49,16 @@ public class Animal {
 
     public String toString(){
         return this.species + " " + this.name;
+    }
+
+    @Override
+    public void beEaten() throws Exception {
+        weight = 0.0;
+        System.out.println("adiooooooos " + this.species);
+    }
+
+    @Override
+    public void sell() throws Exception {
+        System.out.println("Animal sold " + this.species);
     }
 }

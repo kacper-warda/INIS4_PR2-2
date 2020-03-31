@@ -11,4 +11,13 @@ public class Car extends Device {
         this.plates = plates;
     }
 
+    @Override
+    void turnOn() {
+        System.out.println("Now car is working");
+    }
+
+    @Override
+    public void sell() {
+        System.out.println("Car sold");
+    }
 }

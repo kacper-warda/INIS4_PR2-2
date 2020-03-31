@@ -3,7 +3,7 @@ package com.company;
 import com.company.devices.Car;
 import com.company.devices.Phone;
 
-public class Human extends Animal{
+public class Human extends Animal {
     String firstName;
     String lastName;
     Phone phone;
@@ -36,7 +36,15 @@ public class Human extends Animal{
         }
     }
 
-    public String toString(){
-        return this.firstName + " " + this.lastName;
+    public String toString() {
+        return this.firstName + " " + this.lastName + " " + this.species;
+    }
+
+    public void sell() throws Exception {
+        throw new Exception("you cannot sell humans you idiot!");
+    }
+
+    public void beEaten() throws Exception {
+        throw new Exception("go away devil!");
     }
 }

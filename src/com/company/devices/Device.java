@@ -1,6 +1,8 @@
 package com.company.devices;
 
-public class Device {
+import com.company.Saleable;
+
+public abstract class Device implements Saleable {
 
     public String producer;
     public String model;
@@ -10,5 +12,7 @@ public class Device {
     public String toString(){
         return this.producer + " " + this.model;
     }
+
+    abstract void turnOn();
 
 }
