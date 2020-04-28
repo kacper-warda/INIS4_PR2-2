@@ -1,10 +1,12 @@
-package com.company;
+package com.company.creatures;
+
+import com.company.Saleable;
 
 import java.io.File;
 
-public class Animal implements Edible, Saleable {
+abstract public class Animal implements Saleable {
     final String species;
-    private Double weight;
+    protected Double weight;
     public String name;
     File pic;
 
@@ -27,7 +29,7 @@ public class Animal implements Edible, Saleable {
         }
     }
 
-    void feed() {
+    public void feed() {
         if (weight <= 0) {
             System.out.println("too late man");
         } else {
@@ -36,7 +38,7 @@ public class Animal implements Edible, Saleable {
         }
     }
 
-    void takeForAWalk() {
+    public void takeForAWalk() {
         weight--;
         if (weight <= 0) {
             System.out.println("you can't walk the town with dead animal you freak");
@@ -49,12 +51,6 @@ public class Animal implements Edible, Saleable {
 
     public String toString(){
         return this.species + " " + this.name;
-    }
-
-    @Override
-    public void beEaten() throws Exception {
-        weight = 0.0;
-        System.out.println("adiooooooos " + this.species);
     }
 
     @Override

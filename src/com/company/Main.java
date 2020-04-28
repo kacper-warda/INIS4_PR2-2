@@ -1,5 +1,9 @@
 package com.company;
 
+import com.company.creatures.Animal;
+import com.company.creatures.FarmAnimal;
+import com.company.creatures.Human;
+import com.company.creatures.Pet;
 import com.company.devices.Car;
 import com.company.devices.Device;
 import com.company.devices.Phone;
@@ -11,7 +15,7 @@ public class Main {
         Human me = new Human();
         me.firstName = "Kacper";
         me.lastName = "Warda";
-        me.pet = new Animal("mouse");
+        me.pet = new Pet("mouse");
         me.pet.name = "Myszojeleń";
 
         me.pet.feed();
@@ -63,8 +67,8 @@ public class Main {
 
         me.getCar().sell();
         me.pet.sell();
-        me.sell();
-        me.beEaten();
 
+        FarmAnimal pig = new FarmAnimal("pig");
+        pig.beEaten();
     }
 }
