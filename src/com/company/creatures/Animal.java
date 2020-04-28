@@ -4,7 +4,7 @@ import com.company.Saleable;
 
 import java.io.File;
 
-abstract public class Animal implements Saleable {
+abstract public class Animal implements Saleable, Feedable {
     final String species;
     protected Double weight;
     public String name;
@@ -29,11 +29,20 @@ abstract public class Animal implements Saleable {
         }
     }
 
+    public Animal(String species, Double weight) {
+        this.species = species;
+        this.weight = weight;
+    }
+
     public void feed() {
+        feed(1.0);
+    }
+
+    public void feed(Double foodWeight) {
         if (weight <= 0) {
             System.out.println("too late man");
         } else {
-            weight++;
+            weight += foodWeight;
             System.out.println("thx for food bro, my weight is now " + this.weight);
         }
     }
@@ -49,7 +58,7 @@ abstract public class Animal implements Saleable {
         }
     }
 
-    public String toString(){
+    public String toString() {
         return this.species + " " + this.name;
     }
 

@@ -18,22 +18,6 @@ public class Main {
         me.pet = new Pet("mouse");
         me.pet.name = "Myszojeleń";
 
-        me.pet.feed();
-        me.pet.feed();
-        me.pet.feed();
-        me.pet.feed();
-        me.pet.takeForAWalk();
-        me.pet.takeForAWalk();
-        me.pet.feed();
-        me.pet.feed();
-        me.pet.takeForAWalk();
-        me.pet.takeForAWalk();
-        me.pet.takeForAWalk();
-        me.pet.takeForAWalk();
-        me.pet.takeForAWalk();
-        me.pet.feed();
-
-
         Car dirtyOne = new Car();
         dirtyOne.producer = "fiat";
         dirtyOne.model = "bravo";
@@ -69,6 +53,18 @@ public class Main {
         me.pet.sell();
 
         FarmAnimal pig = new FarmAnimal("pig");
-        pig.beEaten();
+
+        String[] myApps = {"facebook", "whatsapp"};
+
+        me.phone = new Phone();
+        me.phone.installAnApp("messenger");
+        me.phone.installAnApp(myApps);
+
+        System.out.println(me.pet);
+
+        pig.feed();
+        me.feed();
+        me.feed(2.0);
+
     }
 }

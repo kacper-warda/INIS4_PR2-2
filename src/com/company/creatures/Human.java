@@ -12,7 +12,7 @@ public class Human extends Animal {
     private Double salary = 2000.0;
 
     public Human() {
-        super("homo sapiens");
+        super("homo sapiens", 80.0);
     }
 
 
@@ -46,5 +46,18 @@ public class Human extends Animal {
 
     public void beEaten() throws Exception {
         throw new Exception("go away devil!");
+    }
+
+    public void feed() {
+        System.out.println("dziena");
+    }
+
+    public void feed(Double foodWeight) {
+        this.weight += foodWeight;
+        if (foodWeight > 1.0) {
+            System.out.println("nie przeginasz?");
+        } else {
+            System.out.println("dzięki, dzięki, a masz jeszcze?");
+        }
     }
 }
