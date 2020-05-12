@@ -1,12 +1,11 @@
 package com.company;
 
-import com.company.creatures.Animal;
-import com.company.creatures.FarmAnimal;
-import com.company.creatures.Human;
-import com.company.creatures.Pet;
+import com.company.creatures.*;
 import com.company.devices.Car;
 import com.company.devices.Device;
 import com.company.devices.Phone;
+
+import java.util.*;
 
 public class Main {
 
@@ -15,56 +14,47 @@ public class Main {
         Human me = new Human();
         me.firstName = "Kacper";
         me.lastName = "Warda";
-        me.pet = new Pet("mouse");
-        me.pet.name = "Myszojeleń";
 
-        Car dirtyOne = new Car();
-        dirtyOne.producer = "fiat";
-        dirtyOne.model = "bravo";
-        dirtyOne.yearOfProduction = 2015;
-        dirtyOne.setPlates("GDA323");
+        Car ferrari = new Car("Ferrari", "FF", 1300000.0);
+        Car alfa = new Car("Alfa Romeo", "Julia", 150000.0);
+        Car fiat = new Car("Fiat", "Tipo", 50000.0);
 
-        me.setCar(dirtyOne);
+        me.setCar(ferrari, 0);
+        me.setCar(fiat, 1);
+        me.setCar(alfa, 2);
 
-        Human myWife = new Human();
-        myWife.firstName = "Karolina";
-        myWife.lastName = "Warda";
-        myWife.riseMySalary();
-        myWife.riseMySalary();
-        myWife.riseMySalary();
-        myWife.riseMySalary();
-        myWife.riseMySalary();
-        myWife.setCar(me.getCar());
+        System.out.println(me.getCarsValue());
 
-        System.out.println(myWife.getCar().getPlates());
+        Arrays.sort(me.getGarage());
 
-        System.out.println(me.getCar());
-        System.out.println(myWife.getCar());
+        System.out.println(me.getCar(0));
+        System.out.println(me.getCar(1));
+        System.out.println(me.getCar(2));
 
-        System.out.println(me);
-        System.out.println(myWife);
 
-        System.out.println(me.pet);
+        List<Car> cars = new LinkedList<Car>();
+        cars.add(ferrari);
+        cars.add(ferrari);
+        cars.add(ferrari);
+        cars.add(alfa);
+        cars.addAll(Arrays.asList(me.getGarage()));
 
-        new Phone();
-        new Car();
+        System.out.println(cars.get(2));
+        System.out.println(cars.size());
+        System.out.println(cars.isEmpty());
 
-        me.getCar().sell();
-        me.pet.sell();
+        Human brotherInLow = new Human();
+        brotherInLow.firstName = "Mateusz";
 
-        FarmAnimal pig = new FarmAnimal("pig");
+        me.getCar(1).sell(me, brotherInLow, 10000.0);
 
-        String[] myApps = {"facebook", "whatsapp"};
 
-        me.phone = new Phone();
-        me.phone.installAnApp("messenger");
-        me.phone.installAnApp(myApps);
+        Human fatherInLow = new Human();
+        fatherInLow.firstName = "Wojciech";
 
-        System.out.println(me.pet);
+        brotherInLow.getCar(0).sell(brotherInLow, fatherInLow, 15000.0);
 
-        pig.feed();
-        me.feed();
-        me.feed(2.0);
+        System.out.println(alfa.owners);
 
     }
 }

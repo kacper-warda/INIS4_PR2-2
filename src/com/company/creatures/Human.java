@@ -8,8 +8,11 @@ public class Human extends Animal {
     public String lastName;
     public Phone phone;
     public Animal pet;
-    private Car car;
+    private Car[] garage = new Car[3];
     private Double salary = 2000.0;
+    public Double cash = 20000.0;
+
+    public FarmAnimal[] myAnimals = new FarmAnimal[4];
 
     public Human() {
         super("homo sapiens", 80.0);
@@ -24,16 +27,58 @@ public class Human extends Animal {
         this.salary *= 1.1;
     }
 
-    public Car getCar() {
-        return car;
+    public Car getCar(int carNumber) {
+        return garage[carNumber];
     }
 
-    public void setCar(Car car) throws Exception {
-        if (car.value > this.salary * 12) {
-            throw new Exception("nie stać cie, sorry");
-        } else {
-            this.car = car;
+
+    public void removeCar(Car newCar) throws Exception {
+        boolean success = false;
+        for (int i = 0; i < garage.length; i++) {
+            if (garage[i] == newCar) {
+                garage[i] = null;
+                success = true;
+                break;
+            }
         }
+        if (!success) {
+            throw new Exception("nie posiadam takiego samochodu");
+        }
+    }
+
+
+    public void setCar(Car newCar) throws Exception {
+        boolean success = false;
+        for (int i = 0; i < garage.length; i++) {
+            if (garage[i] == null) {
+                this.setCar(newCar, i);
+                success = true;
+                break;
+            }
+        }
+        if (!success) {
+            throw new Exception("brak miejsc w garażu");
+        }
+
+    }
+
+    public void setCar(Car car, int carNumber) throws Exception {
+        if (garage[carNumber] != null) {
+            throw new Exception("to miejsce jest już zajęte");
+        }
+
+        this.garage[carNumber] = car;
+        car.owners.add(this);
+    }
+
+    public Double getCarsValue() {
+        Double sum = 0.0;
+        for (Car car : garage) {
+            if (car != null) {
+                sum += car.value;
+            }
+        }
+        return sum;
     }
 
     public String toString() {
@@ -59,5 +104,38 @@ public class Human extends Animal {
         } else {
             System.out.println("dzięki, dzięki, a masz jeszcze?");
         }
+    }
+
+    public Car[] getGarage() {
+        return this.garage;
+    }
+
+    public boolean hasCar(Car newCar) {
+        boolean hasCar = false;
+        for (Car car : garage) {
+            if (car == newCar) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean couldBuyCar(Car newCar, Double price) throws Exception {
+        if (price > this.cash) {
+            throw new Exception("sorry, brak kasy");
+        }
+        if (!this.hasFreePlaceInGarage()) {
+            throw new Exception("sorry, brak miejsca");
+        }
+        return true;
+    }
+
+    private boolean hasFreePlaceInGarage() {
+        for (int i = 0; i < garage.length; i++) {
+            if (garage[i] == null) {
+                return true;
+            }
+        }
+        return false;
     }
 }
